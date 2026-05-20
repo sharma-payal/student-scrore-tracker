@@ -36,3 +36,34 @@ SELECT * FROM students ORDER BY name ASC;
 
 --4 LIMIT (TOP RESULTS)
 SELECT * FROM students ORDER BY marks DESC LIMIT 1;
+
+
+
+---PRACTICE SQL LEVEL 2(AGGREGATION)
+
+--1. COUNT(count rows in a table)
+SELECT COUNT(*) AS total_count FROM students;
+
+--2. SUM()
+SELECT SUM(marks) AS total_marks FROM students;
+
+--3. AVEREAGE()
+SELECT AVG(marks) AS average_marks FROM students;
+
+--4.MIN/MAX
+SELECT MIN(marks) AS lowest_marks FROM students;
+SELECT MAX(marks) AS highest_marks FROM students;
+
+--GROUP BY (Most important)
+--5. Marks per course(Grou[ps students by course and calculate the average of marks)
+SELECT course AVG(marks) AS average_marks FROM students GROUP BY course;
+
+--6.Count per course (count students per course)
+SELECT course COUNT(*) AS students_count FROM students GROUP BY course;
+
+
+
+--HAVING (FILTER GROUPS - Interview Favourite)
+
+--7. SELECT course AVG(marks) AS average_marks FROM students GROUP BY course HAVING AVG(marks) > 80;
+
