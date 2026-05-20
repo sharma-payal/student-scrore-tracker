@@ -11,3 +11,6 @@ SELECT AVG(marks) AS average_marks FROM students;
 
 SELECT * FROM students ORDER BY marks DESC;
 
+SELECT * FROM students ORDER BY marks DESC LIMIT1;
+
+SELECT COUNT(*) AS total_students FROM students
