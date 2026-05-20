@@ -67,3 +67,37 @@ SELECT course COUNT(*) AS students_count FROM students GROUP BY course;
 
 --7. SELECT course AVG(marks) AS average_marks FROM students GROUP BY course HAVING AVG(marks) > 80;
 
+
+
+---Sql Practice LEVEL 3 
+--1. CREATE TABLE - COURSE
+
+CREATE TABLE course ( course_id INT PRIMARY KEY, course_name VARCHAR(50), instructor VARCHAR(50));
+
+
+--2. Insert Data in the Table course
+
+INSERT INTO course VALUES((101, 'SQL', 'John'), (102, 'Python', 'Payal'),(103, 'Analytics', 'Besu'));
+
+
+--3. ALTER table (Very imp)
+
+ALTER TABLE students ADD course_id INT;
+
+
+--4. UPDATE ROWS students
+
+UPDATE students SET course_id = 101 WHERE id = 1;
+UPDATE students SET course_id = 102 WHERE id = 2;
+UPDATE students SET course_id = 103 WHERE id = 3;
+
+
+--5. INNER JOINS(very important)
+
+SELECT students.name, students.marks, course.course_name, course.instrcutor FROM students INNER JOIN course ON students.course_id = course.course_id;
+
+
+--6. LEFT JOINS(very important)
+
+SELECT students.name, course.course_name FROM students INNER JOIN ON students.course_id = course.course_id;
+
