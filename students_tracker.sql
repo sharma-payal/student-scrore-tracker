@@ -49,3 +49,47 @@ SELECT name, marks, DENSE_RANK() OVER (ORDER BY marks DESC) AS dense_rank FROM s
 SELECT name, course, marks, RANK() OVER (PARTITION BY course ORDER BY marks DESC) AS course_student FROM students;
 
 
+---LEVEL 6
+
+--1.CREATE PAYMENT TABLE
+
+CREATE TABLE payments(payment_id INT PRIMARY KEY, student_id INT, amount INT, payment_status INT, payment_date INT);
+
+--2. INSERT Data Values
+
+INSERT INTO payments VALUES (1,1,500,'Succeed','2026-01-10'),(2,2,700,'Succeed', '26-01-11'),(3,3,400,'Failed','26-01-12'),(4,4,800,'Succeed','26-01-13'),(5,5,900,'Failed','26-01-14');
+
+--3. TOTAL REVENUE
+
+SELECT SUM(amount) AS total_revenue FROM payments WHERE payment_status = 'Succeed';
+
+--4. FAILED PAYMENTS
+
+SELECT * FROM payments WHERE payment_status = 'Failed';
+
+--5. High Payments
+
+SELECT * FROM payments WHERE amount > 500;
+
+--6. CUSTOMER PAYMENTS ANALYTICS
+
+SELECT student_id, SUM(amount) AS student_spent FROM payments GROUP BY student_id;
+
+
+--7. JOIN students + payments
+
+
+SELECT students.name, payments.amount,payments.payment_status FROM students INNER JOIN payments WHERE students.student_id = payments.student_id;
+
+--8. Business Query -- Fraud-LIKE-Detection
+
+SELECT * FROM payments WHERE payment_status = 'Failed' AND amount > 500;
+
+
+--9. Daily Revenue
+
+SELECT payment_date, SUM(amount) AS daily_revenue FROM payments WHERE payment_status = 'Succeed'
+
+
+   
+
